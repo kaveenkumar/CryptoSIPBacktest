@@ -16,4 +16,4 @@ Backtest crypto SIP performance
 # Contributors
 - Kavin
 - Kaveen
-(copilot - honorary mention)
+- (copilot - honorary mention)
