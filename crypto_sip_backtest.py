@@ -70,7 +70,7 @@ FREQUENCIES = {
 # Write each crypto's DataFrame to a separate sheet in the same Excel file
 
 for freq_str, (timeframe, limit) in FREQUENCIES.items():
-    EXCEL_FILE = f'{BASE_EXCEL_FILE.split(".")[0]}_{freq_str}.xlsx'
+    EXCEL_FILE = f'results/{BASE_EXCEL_FILE.split(".")[0]}_{freq_str}.xlsx'
     summary_data = []
 
     with pd.ExcelWriter(EXCEL_FILE, engine='openpyxl') as writer:
