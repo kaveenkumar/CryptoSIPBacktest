@@ -4,6 +4,7 @@ from openpyxl.formatting.rule import ColorScaleRule
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill, Font
 from tqdm import tqdm
+import os
 
 CRYPTO_LIST = {
     'BTC': 'BTC/USDT',
@@ -65,12 +66,12 @@ def SIP_backtest(CRYPTO, SIP_AMOUNT, timeframe, limit):
 FREQUENCIES = {
     "daily": ("1d", NUM_DAYS),
     "weekly": ("1w", int(NUM_DAYS/7)),
-    "monthly": ("1m", int(NUM_DAYS/30))
+    "monthly": ("1M", int(NUM_DAYS/30))
 }
 # Write each crypto's DataFrame to a separate sheet in the same Excel file
-
+os.makedirs("results_crypto", exist_ok=True)
 for freq_str, (timeframe, limit) in FREQUENCIES.items():
-    EXCEL_FILE = f'results/{BASE_EXCEL_FILE.split(".")[0]}_{freq_str}.xlsx'
+    EXCEL_FILE = f'results_crypto/{BASE_EXCEL_FILE.split(".")[0]}_{freq_str}.xlsx'
     summary_data = []
 
     with pd.ExcelWriter(EXCEL_FILE, engine='openpyxl') as writer:
